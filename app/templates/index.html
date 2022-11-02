@@ -1,0 +1,49 @@
+{% load static %}
+<html>
+    <head>
+        <title>Quickbooks Oauth Webapp</title>
+        <!-- <link rel="stylesheet" type="text/css" href="{% static "style.css" %}"> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            if (window.opener) {
+                window.opener.location.href = '/app/'
+                window.close()
+            }
+
+            function launchPopup(path) {
+                var win;
+                var checkConnect;
+                var parameters = "location=1,width=800,height=650";
+                parameters += ",left=" + (screen.width - 800) / 2 + ",top=" + (screen.height - 650) / 2;
+
+                // Launch Popup
+                win = window.open(path, 'connectPopup', parameters);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="loggedIn" />
+        <h3>Quickbooks Oauth Webapp</h3>
+        Before using this app, please make sure you do the following:
+        <ul>
+            <li>
+                Update <code>~/.qb-api/production-config-auth.json</code> with your client_id ID and client_secret (found at
+                <a href="https://developer.intuit.com">developer.intuit.com</a>, Keys & credentials)
+            </li>
+
+            <li>
+                Start an <a href="https://ngrok.com">ngrok</a>, instance: <code>ngrok http 8000</code>, add the hostname from the 'Forwarding' value to <code>~/.qb-api/production-config-auth.json</code>, redirect_host
+            </li>
+
+            <li>
+                At <a href="https://developer.intuit.com">developer.intuit.com</a>,
+                add the console output of the `REDIRECT_URI` value to Keys & credentials -> Redirect URIs
+            </li>
+        </ul>
+
+        <b>OAuth2 flow</b><br/>
+        <a class="imgLink" href="#" onclick="launchPopup('/app/oauth/')">
+          Authorize app
+        </a>
+    </body>
+</html>
