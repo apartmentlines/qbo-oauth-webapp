@@ -5,6 +5,9 @@ import requests
 
 from requests.adapters import HTTPAdapter, Retry
 
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 logging.basicConfig(level=logging.INFO)
 
 AUTH_CONFIG_FILE_TEMPLATE = "~/.qb-api/%s-config-auth.json"
