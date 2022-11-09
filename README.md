@@ -17,8 +17,12 @@ This app is meant to provide a quick method to authorize a QuickBooks app.
 
 Before using this app, please make sure you do the following:
 
-1. Update `~/.qb-api/production-config-auth.json` with your client_id ID and client_secret (found at https://developer.intuit.com, Keys & credentials)
-2. Start an ngrok, instance: `ngrok http 8000`, add the hostname from the 'Forwarding' value to `~/.qb-api/production-config-auth.json`, redirect_host
+1. Start an ngrok, instance: `ngrok http 8000`
+2. Update the parameters in `~/.qb-api/production-config-auth.json`:
+  * `server_access_token` (`AL_QB_API_ACCESS_TOKEN` in `al_qb_api.inc` in web portal code)
+  * `server_endpoint` (normally https://my.apartmentlines.com/al/qb-api/access-config)
+  * `client_id` ID and `client_secret` (found at https://developer.intuit.com, Keys & credentials)
+  * `redirect_host`, hostname from the 'Forwarding' value in the running ngrok instance above
 
 #### Using the app:
 

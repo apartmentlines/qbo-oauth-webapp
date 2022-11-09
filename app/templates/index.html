@@ -27,17 +27,20 @@
         Before using this app, please make sure you do the following:
         <ul>
             <li>
-                Update <code>~/.qb-api/production-config-auth.json</code> with your client_id ID and client_secret (found at
-                <a href="https://developer.intuit.com">developer.intuit.com</a>, Keys & credentials)
+                Start an <a href="https://ngrok.com">ngrok</a>, instance: <code>ngrok http 8000</code>
             </li>
-
             <li>
-                Start an <a href="https://ngrok.com">ngrok</a>, instance: <code>ngrok http 8000</code>, add the hostname from the 'Forwarding' value to <code>~/.qb-api/production-config-auth.json</code>, redirect_host
+                Update the parameters in <code>~/.qb-api/production-config-auth.json</code>:
+                <ul>
+                  <li><code>server_access_token</code> (<code>AL_QB_API_ACCESS_TOKEN</code> in <code>al_qb_api.inc</code> in web portal code)</li>
+                  <li><code>server_endpoint</code> (normally https://my.apartmentlines.com/al/qb-api/access-config)</li>
+                  <li><code>client_id</code> and <code>client_secret</code> (found at <a href="https://developer.intuit.com">developer.intuit.com</a>, Keys & credentials)</li>
+                  <li><code>redirect_host</code>, hostname from the 'Forwarding' value in the running ngrok instance above</li>
+                </ul>
             </li>
-
             <li>
                 At <a href="https://developer.intuit.com">developer.intuit.com</a>,
-                add the console output of the `REDIRECT_URI` value to Keys & credentials -> Redirect URIs
+                add the console output of the <code>REDIRECT_URI</code> value to Keys & credentials -> Redirect URIs
             </li>
         </ul>
 
