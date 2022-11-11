@@ -42,8 +42,7 @@ class QuickbooksConfig(object):
         return data
 
     def write_remote_config(self, endpoint, data):
-        json_object = json.dumps(data, indent=4)
-        self.logger.error("Writing remote config to endpoint: %s, data: %s" % (endpoint, json_object))
+        self.logger.error("Writing remote config to endpoint: %s, data: %s" % (endpoint, data['value']))
         resp = self.request.post(endpoint, data=data, verify=False)
         if resp.status_code != 200 or resp.text != "OK":
             self.logger.error("Could not write config access file: %s, %s" % (resp.status_code, resp.text))
@@ -52,11 +51,16 @@ class QuickbooksConfig(object):
 
     def write_access_config(self, auth_client):
         if auth_client.access_token is not None and auth_client.refresh_token is not None and auth_client.realm_id is not None:
-            data = {
+            json_object = {
                 "access_token": auth_client.access_token,
                 "refresh_token": auth_client.refresh_token,
                 "realm_id": auth_client.realm_id,
-                "server_access_token": self.auth_config['server_access_token'],
+            }
+            json_string = json.dumps(json_object, indent=4)
+            data = {
+                "token": self.auth_config['server_access_token'],
+                "key": "qb-api.json",
+                "value": json_string,
             }
             self.write_remote_config(self.auth_config['server_endpoint'], data)
         else:
