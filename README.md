@@ -19,8 +19,8 @@ Before using this app, please make sure you do the following:
 
 1. Start an ngrok, instance: `ngrok http 8000`
 2. Update the parameters in `~/.qb-api/production-config-auth.json`:
-  * `server_access_token` (`AL_QB_API_ACCESS_TOKEN` in `al_qb_api.inc` in web portal code)
-  * `server_endpoint` (normally https://my.apartmentlines.com/al/qb-api/access-config)
+  * `server_access_token` (`qb-api.json` in `config.js` in web-api-gateway)
+  * `server_endpoint` (normally https://www.apartmentlines.com/api/sss)
   * `client_id` ID and `client_secret` (found at https://developer.intuit.com, Keys & credentials)
   * `redirect_host`, hostname from the 'Forwarding' value in the running ngrok instance above
 
@@ -31,7 +31,13 @@ Before using this app, please make sure you do the following:
 ...then...
 
 1. Launch the app using the ngrok 'Forwarding' value from above.
-2. At https://developer.intuit.com, add the console output of the `REDIRECT_URI` value to Keys & credentials -> Redirect URIs
+2. At https://developer.intuit.com
+  * Log in as `admin@apartmentlines.com`
+  * Add the console output of the `REDIRECT_URI` value to Keys & credentials -> Redirect URIs
+  * Log out
+3. Log in to `https://qbo.intuit.com/` as an admin for the Apartment Lines Quickbooks company
+4. Click `Authorize app`
+5. Check the console output of `qbo-oauth-webapp`, it should have successfully written the necessary credentials to shared storage
 
 ### App Workflows
 

@@ -32,8 +32,8 @@
             <li>
                 Update the parameters in <code>~/.qb-api/production-config-auth.json</code>:
                 <ul>
-                  <li><code>server_access_token</code> (<code>AL_QB_API_ACCESS_TOKEN</code> in <code>al_qb_api.inc</code> in web portal code)</li>
-                  <li><code>server_endpoint</code> (normally https://my.apartmentlines.com/al/qb-api/access-config)</li>
+                  <li><code>server_access_token</code> (<code>qb-api.json</code> in <code>config.js</code> in web-api-gateway)</li>
+                  <li><code>server_endpoint</code> (normally https://www.apartmentlines.com/api/sss)</li>
                   <li><code>client_id</code> and <code>client_secret</code> (found at <a href="https://developer.intuit.com">developer.intuit.com</a>, Keys & credentials)</li>
                   <li><code>redirect_host</code>, hostname from the 'Forwarding' value in the running ngrok instance above</li>
                 </ul>
@@ -41,6 +41,9 @@
             <li>
                 At <a href="https://developer.intuit.com">developer.intuit.com</a>,
                 add the console output of the <code>REDIRECT_URI</code> value to Keys & credentials -> Redirect URIs
+            </li>
+            <li>
+                Follow the instructions in the README for the app to start it, and to use it to get the necessary access information written to shared storage
             </li>
         </ul>
 
